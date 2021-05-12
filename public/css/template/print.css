@@ -1,0 +1,454 @@
+.col-p-1, .col-p-2, .col-p-3, .col-p-4, .col-p-5, .col-p-6, .col-p-7, .col-p-8, .col-p-9, .col-p-10, .col-p-11, .col-p-12 {
+    float: left;
+  }
+
+  .col-p-12 {
+    width: 100%;
+  }
+  .col-p-11 {
+    width: 90%;
+  }
+  .col-p-10 {
+    width: 82%;
+  }
+  .col-p-9 {
+    width: 75%;
+  }
+  .col-p-8 {
+    width: 65%;
+  }
+  .col-p-7 {
+    width: 57%;
+  }
+  .col-p-6 {
+    width: 45%;
+  }
+  .col-p-5 {
+    width: 40%;
+  }
+  .col-p-4 {
+    width: 32%;
+  }
+  .col-p-3 {
+    width: 23%;
+  }
+  .col-p-2 {
+    width: 16.66666667%;
+  }
+  .col-p-1 {
+    width: 8%;
+  }
+
+  .col-p-pull-12 {
+    right: 100%;
+  }
+  .col-p-pull-11 {
+    right: 91.66666667%;
+  }
+  .col-p-pull-10 {
+    right: 83.33333333%;
+  }
+  .col-p-pull-9 {
+    right: 75%;
+  }
+  .col-p-pull-8 {
+    right: 66.66666667%;
+  }
+  .col-p-pull-7 {
+    right: 58.33333333%;
+  }
+  .col-p-pull-6 {
+    right: 50%;
+  }
+  .col-p-pull-5 {
+    right: 41.66666667%;
+  }
+  .col-p-pull-4 {
+    right: 33.33333333%;
+  }
+  .col-p-pull-3 {
+    right: 25%;
+  }
+  .col-p-pull-2 {
+    right: 16.66666667%;
+  }
+  .col-p-pull-1 {
+    right: 8.33333333%;
+  }
+  .col-p-pull-0 {
+    right: auto;
+  }
+  .col-p-push-12 {
+    left: 100%;
+  }
+
+  .col-p-push-11 {
+    left: 91.66666667%;
+  }
+  .col-p-push-10 {
+    left: 83.33333333%;
+  }
+  .col-p-push-9 {
+    left: 75%;
+  }
+  .col-p-push-8 {
+    left: 66.66666667%;
+  }
+  .col-p-push-7 {
+    left: 58.33333333%;
+  }
+  .col-p-push-6 {
+    left: 50%;
+  }
+  .col-p-push-5 {
+    left: 41.66666667%;
+  }
+  .col-p-push-4 {
+    left: 33.33333333%;
+  }
+  .col-p-push-3 {
+    left: 25%;
+  }
+  .col-p-push-2 {
+    left: 16.66666667%;
+  }
+  .col-p-push-1 {
+    left: 8.33333333%;
+  }
+  .col-p-push-0 {
+    left: auto;
+  }
+
+  .col-p-offset-12 {
+    margin-left: 100%;
+  }
+  .col-p-offset-11 {
+    margin-left: 91.66666667%;
+  }
+  .col-p-offset-10 {
+    margin-left: 83.33333333%;
+  }
+  .col-p-offset-9 {
+    margin-left: 75%;
+  }
+  .col-p-offset-8 {
+    margin-left: 66.66666667%;
+  }
+  .col-p-offset-7 {
+    margin-left: 58.33333333%;
+  }
+  .col-p-offset-6 {
+    margin-left: 50%;
+  }
+  .col-p-offset-5 {
+    margin-left: 41.66666667%;
+  }
+  .col-p-offset-4 {
+    margin-left: 33.33333333%;
+  }
+  .col-p-offset-3 {
+    margin-left: 25%;
+  }
+  .col-p-offset-2 {
+    margin-left: 16.66666667%;
+  }
+  .col-p-offset-1 {
+    margin-left: 8.33333333%;
+  }
+  .col-p-offset-0 {
+    margin-left: 0%;
+  }
+
+
+/* Always insert a page break after the element */
+  .always-page-break-after,
+  .always-pba {
+    page-break-after: always;
+  }
+
+  /* Avoid page break after the element (if possible) */
+  .avoid-page-break-after,
+  .avoid-pba {
+    page-break-after: avoid;
+  }
+
+  /* Insert page breaks after the element so that the next page is formatted as a left page */
+  .left-page-break-after,
+  .left-pba {
+    page-break-after: left;
+  }
+
+  /* Insert page breaks after the element so that the next page is formatted as a right page */
+  .right-page-break-after,
+  .right-pba {
+    page-break-after: right;
+  }
+
+  /* Always insert a page break before the element */
+  .always-page-break-before,
+  .always-pbb {
+    page-break-before: always;
+  }
+
+  /* Avoid page break before the element (if possible) */
+  .avoid-page-break-before,
+  .avoid-pbb {
+    page-break-before: avoid;
+  }
+
+  /* Insert page breaks before the element so that the next page is formatted as a left page */
+  .left-page-break-before,
+  .left-pbb {
+    page-break-before: left;
+  }
+
+  /* Insert page breaks before the element so that the next page is formatted as a right page */
+  .right-page-break-before,
+  .right-pbb {
+    page-break-before: right;
+  }
+
+  /* Avoid page break inside the element (if possible) */
+  .avoid-page-break-inside,
+  .avoid-pbi {
+    page-break-inside: avoid;
+  }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.clear{
+  clear:both;
+  content: "";
+}
+
+
+
+a {
+  color: #5D6975;
+  text-decoration: underline;
+}
+
+body {
+  width: 100%;
+  position: relative;
+  margin: 0 auto; 
+  color: #001028;
+  background: #FFFFFF; 
+  font-family: 'Georgia' , Arial, sans-serif; 
+  font-size: 12px; 
+}
+
+h1 {
+  color: #5D6975;
+  font-size: 2.0em;
+  line-height: 1.4em;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+h4{
+  border-bottom: 1px solid #aaa;
+  padding:5px 0;
+  margin: 2px 0 5px;
+  text-transform: uppercase;
+}
+
+h5 {
+  font-size: 13px;
+  margin: 3px 0;
+}
+
+@page { margin: 120px 50px 60px 50px}
+
+
+#header {  top: -110px; right: 0px; height: 100px; }
+#footer {  bottom: -60px; right: 0px; height: 50px;border-top: 1px solid #aaa; }
+
+#header .logo{
+  width: 48%;
+  float: left;
+}
+
+#header .info{
+  width: 48%;
+  float: right;
+  text-align: right;
+  padding-top: 5px;
+}
+
+#header .info p{
+  margin: 0;
+}
+
+#header, #footer{
+   position: fixed; 
+   left: 0px;
+    color: #2b2b2b;
+    font-size: 11px;
+}
+
+#footer .num-pag{
+  width: 50px;
+}
+
+
+#footer .text-footer{
+  text-align: center;
+}
+
+.pagenum:before {
+    content: counter(page);
+}
+
+.page{
+  page-break-before:always
+}
+
+#content-file{
+  margin-bottom: 30px;
+}
+
+
+#content-file table tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+#content-file table, th, td {
+    border: 1px solid black;
+}
+
+#content-file table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#content-file th, td {
+    padding: 5px;
+}
+
+#content-file th {
+    text-align: left;
+}
+
+#content-file table {
+    border-spacing: 5px;
+      width:100%;
+}
+
+.div-bordered{
+  padding: 2px;
+  border: 0.5px solid #fafafa;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.text-justify{
+  text-align: justify;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-uppercase{
+  text-transform: uppercase;
+}
+
+.not-print{
+  display: none;
+}
+
+.bg-red,.bg-green, .bg-orange {
+  color : #fff;
+  font-weight: bold;
+
+}
+
+.bg-red{
+    background-color: #dd4b39 !important;
+}
+
+.bg-blue{
+    background-color: #0073b7 !important;
+}
+
+.bg-green{
+    background-color: #00a65a !important;
+}
+
+.bg-orange {
+    background-color: #ff851b !important;
+}
+
+.text-white{
+  color :#ffffff !important;
+}
+
+
+.gap{
+    margin-bottom: 20px;
+    width:100%;
+    clear: both;
+}
+
+.rule{
+  padding: 5px;
+  height: 30px;
+  clear:both;
+}
+
+.rule  table tr td{
+   color: #ccc;
+   text-align: center;
+}
+
+.rule  table tr td.active{
+  color: #000;
+  border: 1px solid;
+}
+
+#powerby{
+  position: absolute;
+  color: #ccc;
+  top:0px;
+  right : -25px;
+  writing-mode:tb-rl;
+  -webkit-transform:rotate(90deg);
+  -moz-transform:rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform: rotate(90deg);
+  white-space:nowrap;
+  display:block;
+  width:10px;
+  height: 100%;
+  font-size: 11px;
+}
+
+span.span-type-checkbox{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #e1e1e1;
+  border:1px solid #878787;
+  text-align: center;
+  font-size: 10px;
+}
+
+ul.list-unstyled{
+ margin:0 !important;
+ padding-left: 0;
+list-style: none;
+}

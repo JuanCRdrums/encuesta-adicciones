@@ -1,0 +1,123 @@
+/* Unessential CSS - Just here to make this sample page prettier */
+
+
+/* Layout */
+.charts {
+    width: 100%;
+}
+.wrapper,
+.wrapper-flex {
+    margin: 0 auto;
+    padding: 1px 3em;
+}
+.wrapper-flex {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.col {
+    padding: 2%;
+    width: 100%;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -ms-flex-basis: 100%;
+    -webkit-flex-basis: 100%;
+    flex-basis: 100%;
+}
+.col-table {
+    padding: 0;
+    margin: 2%;
+    width: 96%;
+
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    -ms-flex-basis: 96%;
+    -webkit-flex-basis: 96%;
+    flex-basis: 96%;
+}
+
+.charts h3,
+.charts h4,
+.charts caption {
+    font-size: 20px;
+}
+caption {
+    font-weight: bold;
+}
+.charts h3 {
+    font-family: 'Roboto', Arial, Heletica, sans-serif;
+    font-weight: bold;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+/* Charts Rows */
+.chart,
+.data-table {
+    width: 100%;
+}
+
+/* Tables */
+.charts .google-visualization-table-table,
+table {
+    font-size: 16px;
+    width: 100%;
+    background-color: #eee;
+    border-collapse: collapse;
+}
+.charts th {
+    background-color: #a82180;
+    color: #fff;
+}
+.charts th,
+.charts td {
+    padding: .2em 1em;
+    font-size: .9em;
+}
+#tableChart th {
+    background-color: #3691ff;
+}
+
+
+
+
+/* Media queries */
+@media screen and ( min-width: 769px ) {
+    .col {
+        width: 50%;
+        -ms-flex-basis: 50%;
+        -webkit-flex-basis: 50%;
+        flex-basis: 50%;
+    }
+    .col-table {
+        width: 46%;
+        -ms-flex-basis: 46%;
+        -webkit-flex-basis: 46%;
+        flex-basis: 46%;
+    }
+    .intro h1 {
+        font-size: 80px;
+    }
+}
+@media screen and ( min-width: 1401px ) {
+    .col {
+        width: 33.3333%;
+        -ms-flex-basis: 33.3333%;
+        -webkit-flex-basis: 33.3333%;
+        flex-basis: 33.3333%;
+    }
+    .col-table {
+        width: 29.3333%;
+        -ms-flex-basis: 29.3333%;
+        -webkit-flex-basis: 29.3333%;
+        flex-basis: 29.3333%;
+    }
+}
