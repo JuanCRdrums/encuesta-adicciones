@@ -14,6 +14,7 @@
             <div class="col col-lg-3"></div>
             <div class="col-md-auto">
                 <h2>OMS - ASSIST V3.0</h2>
+                <p>Todos los campos son requeridos</p>
             </div>
             <div class="col col-lg-2"></div>
         </div>
@@ -51,6 +52,18 @@
                         <div class="form-group">
                           <label>Correo electrónico   </label>
                           {!! Form::text('email',null,['class'=>'form-control']) !!}
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Empresa   </label>
+                          {!! Form::text('empresa',null,['class'=>'form-control']) !!}
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Cargo   </label>
+                          {!! Form::text('cargo',null,['class'=>'form-control']) !!}
                         </div>
                       </div>
                       

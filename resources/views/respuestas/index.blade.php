@@ -34,6 +34,9 @@
                             <th>Nombre</th>
                             <th>Teléfono</th>
                             <th>Correo electrónico</th>
+                            <th>Ciudad</th>
+                            <th>Empresa</th>
+                            <th>Cargo</th>
                             <th>Fecha y hora</th>
                             <th><i class="fa fa-cog"></i></th>
                         </thead>
@@ -43,6 +46,9 @@
                                     <td>{{ $respuesta->usuario->nombre }}</td>
                                     <td>{{ $respuesta->usuario->telefono }}</td>
                                     <td>{{ $respuesta->usuario->email }}</td>
+                                    <td>{{ (!empty($respuesta->usuario->ciudad)? $respuesta->usuario->ciudad : null) }}</td>
+                                    <td>{{ (!empty($respuesta->usuario->empresa)? $respuesta->usuario->empresa : null) }}</td>
+                                    <td>{{ (!empty($respuesta->usuario->cargo)? $respuesta->usuario->cargo : null) }}</td>
                                     <td>{{ $respuesta->updated_at }}</td>
                                     <td>
                                         <a href="{{ '/show/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB/' . $respuesta->id }}" ><button type="button" class="btn btn-default "><i class="fa fa-eye"></i> </button></a>

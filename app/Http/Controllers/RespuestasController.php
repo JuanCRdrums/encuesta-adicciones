@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 use App\Respuestas;
 
@@ -230,7 +232,27 @@ class RespuestasController extends Controller
 
     public function finalStore(Request $request,$id)
     {
-        $data = $request->all();
+        $data = $request->all();     
+        $v = Validator::make($data, [
+            'nombre' => 'required',
+            'documento' => 'required',
+            'telefono' => 'required',
+            'email' => 'required',
+            'ciudad' => 'required',
+            'empresa' => 'required',
+            'cargo' => 'required',
+          ],['nombre'.'.required' => "El nombre es obligatorio",
+            'documento'.'.required' => "El documento es obligatorio",
+            'telefono'.'.required' => "El teléfono es obligatorio",
+            'email'.'.required' => "El correo elect´ronico es obligatorio",
+            'ciudad'.'.required' => "La ciudad es obligatoria",
+            'empresa'.'.required' => "La empresa es obligatorio",
+            'cargo'.'.required' => "El cargo es obligatorio"]);
+  
+          if ($v->fails()) 
+              return redirect()->back()
+                          ->withErrors($v)
+                          ->withInput();
         unset($data['_token']);
         $respuesta = Respuestas::find($id);
         $respuesta->datos_usuario = json_encode($data);
