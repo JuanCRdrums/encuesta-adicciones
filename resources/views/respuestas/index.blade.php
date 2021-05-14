@@ -13,6 +13,7 @@
             <div class="col col-lg-3"></div>
             <div class="col-md-auto">
                 <h2>OMS - ASSIST V3.0</h2>
+                <a href="{{ '/estadisticas/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB/' }}" ><button type="button" class="btn btn-success">Ver estadísticas</button></a>
             </div>
             <div class="col col-lg-2"></div>
         </div>

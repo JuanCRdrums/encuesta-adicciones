@@ -33,3 +33,6 @@ Route::get('/results/{id}', ['uses' => 'RespuestasController@results']);
 Route::get('/show/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB/{id}', ['uses' => 'RespuestasController@show']);
 
 Route::get('/index/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB', ['uses' => 'RespuestasController@index']);
+
+Route::get('/estadisticas/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB', ['uses' => 'RespuestasController@estadisticas']);
+

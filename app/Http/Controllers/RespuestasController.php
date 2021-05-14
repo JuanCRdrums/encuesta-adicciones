@@ -39,6 +39,14 @@ class RespuestasController extends Controller
         return view('respuestas.index',$data);
     }
 
+    public function estadisticas()
+    {
+        $data = $this->getDataArray();
+        $respuestas = Respuestas::where('puntuaciones','!=','')->get();
+        $data['respuestas'] = $respuestas;
+        return view('respuestas.graficos',$data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
