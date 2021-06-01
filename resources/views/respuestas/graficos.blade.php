@@ -9,6 +9,8 @@
 
 @section('content')
 	<div class="container">
+
+
         <div class="row">
             <div class="col col-lg-3"></div>
             <div class="col-md-auto">
@@ -17,6 +19,47 @@
             </div>
             <div class="col col-lg-2"></div>
         </div>
+        <br>
+        <form method="GET" id="form_rips" action="/estadisticas/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Fecha inicial</label>
+                        <input type="text" name="periodo_inicial" id="periodo_inicial" value="{{  (!empty( $_GET["periodo_inicial"] )?   $_GET["periodo_inicial"]  : null )    }}" placeholder="Fecha Inicial" class="form-control datepickerui" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Fecha final</label>
+                        <input type="text" name="periodo_final" placeholder="Fecha Final" id="periodo_final" value="{{ (!empty( $_GET["periodo_final"] )?   $_GET["periodo_final"]  : null )   }}" class="form-control datepickerui" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Empresa</label>
+                            {!! Form::text('empresa',(!empty($_GET["empresa"])? $_GET["empresa"] : null) ,["class"=>"form-control","id"=>"empresa", "placeholder" => "Empresa"]) !!}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Cargo</label>
+                            {!! Form::text('cargo',(!empty($_GET["cargo"])? $_GET["cargo"] : null) ,["class"=>"form-control","id"=>"cargo", "placeholder" => "Cargo"]) !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                       <div class="form-group">
+                           <label> &nbsp;</label>
+                           <button class="btn btn-primary btn-block" id="btn-buscar"><span class="glyphicon glyphicon-search"></span> GENERAR</button>
+                           {!! Form::hidden('filtrar',1) !!}
+                       </div> 
+                   </div>
+               </div>
+            </div>
+        </form>
+
         <div class="row">
             <div class="col col-lg-3"></div>
             <div class="col-md-auto">

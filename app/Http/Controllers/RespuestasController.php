@@ -39,10 +39,35 @@ class RespuestasController extends Controller
         return view('respuestas.index',$data);
     }
 
-    public function estadisticas()
+    public function estadisticas(Request $request)
     {
         $data = $this->getDataArray();
-        $respuestas = Respuestas::where('puntuaciones','!=','')->get();
+        $data_request = $request->all();
+        if(!empty($data_request['filtrar']))
+        {
+            $query = Respuestas::where('puntuaciones','!=','');
+            if($data_request['periodo_inicial'] != "")
+            {
+                $query->where('created_at', '>=', $data_request['periodo_inicial']);
+            }
+            if($data_request['periodo_final'] != "")
+            {
+                $query->where('created_at', '<=', $data_request['periodo_final']);
+            }
+            if($data_request['empresa'] != "")
+            {
+                $query->where('datos_usuario', 'LIKE', '%"empresa":"%' . $data_request['empresa'] . '%"%');
+            }
+            if($data_request['cargo'] != "")
+            {
+                $query->where('datos_usuario', 'LIKE', '%"cargo":"%' . $data_request['cargo'] . '%"%');
+            }
+            $respuestas = $query->get();
+        }
+        else
+        {
+            $respuestas = Respuestas::where('puntuaciones','!=','')->get();
+        }
         $data['respuestas'] = $respuestas;
         return view('respuestas.graficos',$data);
     }
