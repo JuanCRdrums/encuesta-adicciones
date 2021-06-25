@@ -32,6 +32,7 @@
                 <div class="table-responsive">
                     <table data-sortcols='{"0":"asc","1":"asc"}' class="table datatables_tools table-striped">
                         <thead>
+                            <th># Documento</th>
                             <th>Nombre</th>
                             <th>Teléfono</th>
                             <th>Correo electrónico</th>
@@ -44,6 +45,7 @@
                         <tbody>
                             @foreach($respuestas as $respuesta)
                                 <tr>
+                                    <td>{{ (!empty($respuesta->usuario->documento)? $respuesta->usuario->documento : null) }}</td>
                                     <td>{{ $respuesta->usuario->nombre }}</td>
                                     <td>{{ $respuesta->usuario->telefono }}</td>
                                     <td>{{ $respuesta->usuario->email }}</td>
