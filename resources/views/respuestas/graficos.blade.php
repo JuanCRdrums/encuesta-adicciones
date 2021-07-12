@@ -6,6 +6,116 @@
 {!! Html::style('plugins/datatables/Buttons/css/buttons.dataTables.min.css') !!}
 @stop
 
+{{-- */ $labelsDrogas = ['Tabaco','Bebidas alcohólicas', 'Cannabis', 'Cocaína', 
+    'Anfetaminas', 'Inhalantes', 
+    'Tranquilizantes', 'Alucinógenos', 'Opiáceos', 'Otras']/* --}}
+<script type="text/javascript">
+	var labelsDrogas = ['Tabaco','Bebidas alcohólicas', 'Cannabis', 'Cocaína', 
+    'Anfetaminas', 'Inhalantes', 
+    'Tranquilizantes', 'Alucinógenos', 'Opiáceos', 'Otras'];
+	var dataDrogas = [];
+    var colorsDrogas = [];
+    var dataPromedio = [];
+    var dataRiesgoAlto = [];
+    var dataRiesgoModerado = [];
+    var dataRiesgoBajo = [];
+    var key;
+	function getRandomColor() {
+        var letters = '0123456789ABCDEF';
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+</script>
+
+{{-- */ $dataDrogas = [] /* --}}
+{{-- */ $dataPromedio = [] /* --}}
+{{-- */ $dataRiesgoAlto = [] /* --}}
+{{-- */ $dataRiesgoModerado = [] /* --}}
+{{-- */ $dataRiesgoBajo = [] /* --}}
+@foreach($drogas_corto as $key => $value)
+    {{-- */ array_push($dataDrogas,0) /* --}}
+    {{-- */ array_push($dataPromedio,0) /* --}}
+    {{-- */ array_push($dataRiesgoAlto,0) /* --}}
+    {{-- */ array_push($dataRiesgoModerado,0) /* --}}
+    {{-- */ array_push($dataRiesgoBajo,0) /* --}}
+    <script>
+        colorsDrogas.push(getRandomColor());
+        dataDrogas.unshift(0);
+        dataPromedio.unshift(0);
+        dataRiesgoAlto.unshift(0);
+        dataRiesgoModerado.unshift(0);
+        dataRiesgoBajo.unshift(0);
+    </script>
+@endforeach
+
+
+
+@foreach($respuestas as $respuesta)
+    @foreach($respuesta->consumidas as $key => $value)
+        {{-- */ $keyPhp = intval($key) - 1 /* --}}
+        {{-- */ $dataDrogas[$keyPhp] = $dataDrogas[$keyPhp] + intval($value) /* --}}
+        <script>
+            key = parseInt('{{$key}}',10) - 1;
+            dataDrogas[key] = dataDrogas[key] + parseInt('{{$value}}',10);
+        </script>
+    @endforeach
+
+    @foreach($respuesta->results as $key => $value)
+        {{-- */ $keyPhp = intval($key) - 1 /* --}}
+        {{-- */ $dataPromedio[$keyPhp] = $dataPromedio[$keyPhp] + intval($value) /* --}}
+        <script>
+            key = parseInt('{{$key}}',10) - 1;
+            dataPromedio[key] = dataPromedio[key] + parseInt('{{$value}}',10);
+        </script>
+    @endforeach
+
+    @foreach($respuesta->riesgo as $key => $value)
+        @if($value == "Alto")
+            {{-- */ $keyPhp = intval($key) - 1 /* --}}
+            {{-- */ $dataRiesgoAlto[$keyPhp]++ /* --}}
+            <script>
+                key = parseInt('{{$key}}',10) - 1;
+                dataRiesgoAlto[key]++;
+            </script>
+        @endif
+        @if($value == "Moderado")
+            {{-- */ $keyPhp = intval($key) - 1 /* --}}
+            {{-- */ $dataRiesgoModerado[$keyPhp]++ /* --}}
+            <script>
+                key = parseInt('{{$key}}',10) - 1;
+                dataRiesgoModerado[key]++;
+            </script>
+        @endif
+        @if($value == "Bajo")
+            {{-- */ $keyPhp = intval($key) - 1 /* --}}
+            {{-- */ $dataRiesgoBajo[$keyPhp]++ /* --}}
+            <script>
+                key = parseInt('{{$key}}',10) - 1;
+                dataRiesgoBajo[key]++;
+            </script>
+        @endif
+    @endforeach
+
+@endforeach
+
+
+@for($i = 0; $i < count($dataPromedio); $i++)
+    {{-- */ $dataPromedio[$i] = $dataPromedio[$i] / count($dataPromedio) /* --}}
+@endfor
+
+<script>
+    var len = dataPromedio.length;
+    for(var i = 0; i < len; i++)
+        dataPromedio[i] = dataPromedio[i] / len;
+
+    console.log(dataPromedio);
+</script>
+
+
+
 
 @section('content')
 	<div class="container">
@@ -89,6 +199,28 @@
         </div>
         <div class="row">
             <div class="col-md-auto">
+                <div class="table-responsive">
+                    <table data-sortcols='{"0":"asc","1":"asc"}' class="table datatables_tools table-striped">
+                        <thead>
+                            <th>Sustancia</th>
+                            <th>Personas consumidoras</th>
+                        </thead>
+                        <tbody>
+                            {{-- */$i = 0/* --}}
+                            @foreach($dataDrogas as $droga)
+                                <tr>
+                                    <td>{{ $labelsDrogas[$i] }}</td>
+                                    <td>{{ $droga }}</td>
+                                    {{-- */ $i++/* --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
                 <div class="box">
                     <div class="box-header with-border">
                         <h5 class="box-title">Promedio de puntaje por sustancia:</h5>
@@ -103,6 +235,28 @@
                 </div>
             </div>
             <div class="col col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="table-responsive">
+                    <table data-sortcols='{"0":"asc","1":"asc"}' class="table datatables_tools table-striped">
+                        <thead>
+                            <th>Sustancia</th>
+                            <th>Promedio de puntaje</th>
+                        </thead>
+                        <tbody>
+                            {{-- */$i = 0/* --}}
+                            @foreach($dataPromedio as $droga)
+                                <tr>
+                                    <td>{{ $labelsDrogas[$i] }}</td>
+                                    <td>{{ $droga }}</td>
+                                    {{-- */ $i++/* --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-auto">
@@ -123,6 +277,28 @@
         </div>
         <div class="row">
             <div class="col-md-auto">
+                <div class="table-responsive">
+                    <table data-sortcols='{"0":"asc","1":"asc"}' class="table datatables_tools table-striped">
+                        <thead>
+                            <th>Sustancia</th>
+                            <th>Pacientes con riesgo alto</th>
+                        </thead>
+                        <tbody>
+                            {{-- */$i = 0/* --}}
+                            @foreach($dataRiesgoAlto as $droga)
+                                <tr>
+                                    <td>{{ $labelsDrogas[$i] }}</td>
+                                    <td>{{ $droga }}</td>
+                                    {{-- */ $i++/* --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
                 <div class="box">
                     <div class="box-header with-border">
                         <h5 class="box-title">Pacientes con riesgo moderado por sustancia:</h5>
@@ -137,6 +313,28 @@
                 </div>
             </div>
             <div class="col col-lg-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="table-responsive">
+                    <table data-sortcols='{"0":"asc","1":"asc"}' class="table datatables_tools table-striped">
+                        <thead>
+                            <th>Sustancia</th>
+                            <th>Pacientes con riesgo moderado</th>
+                        </thead>
+                        <tbody>
+                            {{-- */$i = 0/* --}}
+                            @foreach($dataRiesgoModerado as $droga)
+                                <tr>
+                                    <td>{{ $labelsDrogas[$i] }}</td>
+                                    <td>{{ $droga }}</td>
+                                    {{-- */ $i++/* --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-auto">
@@ -155,91 +353,34 @@
             </div>
             <div class="col col-lg-2"></div>
         </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="table-responsive">
+                    <table data-sortcols='{"0":"asc","1":"asc"}' class="table datatables_tools table-striped">
+                        <thead>
+                            <th>Sustancia</th>
+                            <th>Pacientes con riesgo bajo</th>
+                        </thead>
+                        <tbody>
+                            {{-- */$i = 0/* --}}
+                            @foreach($dataRiesgoBajo as $droga)
+                                <tr>
+                                    <td>{{ $labelsDrogas[$i] }}</td>
+                                    <td>{{ $droga }}</td>
+                                    {{-- */ $i++/* --}}
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 
-
-<script type="text/javascript">
-	var labelsDrogas = ['Tabaco','Bebidas alcohólicas', 'Cannabis', 'Cocaína', 
-    'Anfetaminas', 'Inhalantes', 
-    'Tranquilizantes', 'Alucinógenos', 'Opiáceos', 'Otras'];
-	var dataDrogas = [];
-    var colorsDrogas = [];
-    var dataPromedio = [];
-    var dataRiesgoAlto = [];
-    var dataRiesgoModerado = [];
-    var dataRiesgoBajo = [];
-    var key;
-	function getRandomColor() {
-        var letters = '0123456789ABCDEF';
-        var color = '#';
-        for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-        }
-        return color;
-    }
-</script>
-
-
-@foreach($drogas_corto as $key => $value)
-    <script>
-        colorsDrogas.push(getRandomColor());
-        dataDrogas.unshift(0);
-        dataPromedio.unshift(0);
-        dataRiesgoAlto.unshift(0);
-        dataRiesgoModerado.unshift(0);
-        dataRiesgoBajo.unshift(0);
-    </script>
-@endforeach
-
-@foreach($respuestas as $respuesta)
-    @foreach($respuesta->consumidas as $key => $value)
-        <script>
-            key = parseInt('{{$key}}',10) - 1;
-            dataDrogas[key] = dataDrogas[key] + parseInt('{{$value}}',10);
-        </script>
-    @endforeach
-
-    @foreach($respuesta->results as $key => $value)
-        <script>
-            key = parseInt('{{$key}}',10) - 1;
-            dataPromedio[key] = dataPromedio[key] + parseInt('{{$value}}',10);
-        </script>
-    @endforeach
-
-    @foreach($respuesta->riesgo as $key => $value)
-        @if($value == "Alto")
-            <script>
-                key = parseInt('{{$key}}',10) - 1;
-                dataRiesgoAlto[key]++;
-            </script>
-        @endif
-        @if($value == "Moderado")
-            <script>
-                key = parseInt('{{$key}}',10) - 1;
-                dataRiesgoModerado[key]++;
-            </script>
-        @endif
-        @if($value == "Bajo")
-            <script>
-                key = parseInt('{{$key}}',10) - 1;
-                dataRiesgoBajo[key]++;
-            </script>
-        @endif
-    @endforeach
-
-@endforeach
-
-<script>
-    var len = dataPromedio.length;
-    for(var i = 0; i < len; i++)
-        dataPromedio[i] = dataPromedio[i] / len;
-
-    console.log(dataPromedio);
-</script>
 
 
 
@@ -262,17 +403,25 @@
 {!! Html::script('plugins/datatables/Buttons/js/dataTables.buttons.min.js') !!} 
 {!! Html::script('plugins/datatables/Buttons/js/buttons.print.min.js') !!}
 {!! Html::script('plugins/datatables/Buttons/js/buttons.flash.min.js') !!}
+{!! Html::script('js/jquery.validate.min.js') !!}
+{!! Html::script('js/jquery.dataTables.min.js') !!}
+{!! Html::script('js/dataTables.bootstrap.min.js') !!} 
+{!! Html::script('js/dataTables.buttons.min.js') !!} 
+{!! Html::script('js/jszip.min.js') !!}
+{!! Html::script('js/pdfmake.min.js') !!}
+{!! Html::script('js/vfs_fonts.js') !!}
+{!! Html::script('js/buttons.html5.min.js') !!} 
+{!! Html::script('js/buttons.colVis.min.js') !!}
 <script type="text/javascript">
     var graphic = 
 		{
-			type:"doughnut",
+			type:"bar",
 			data: {
 				labels: labelsDrogas,
 				datasets:[{
 					label: "Sustancia",
 					data: dataDrogas,
 					backgroundColor: colorsDrogas,
-					hoverOffset: 4
 				}
 				]
 			},
