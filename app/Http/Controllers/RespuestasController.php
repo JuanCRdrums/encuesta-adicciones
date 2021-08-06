@@ -23,6 +23,7 @@ class RespuestasController extends Controller
             'combo_afirmacion' => Respuestas::getComboAfirmacion(),
             'drogas_corto' => Respuestas::getComboDrogasCorto(),
             'combo_significados' => Respuestas::getComboSignificados(),
+            'riesgos' => Respuestas::getComboRiesgos(),
         ];
     }
 
@@ -71,6 +72,42 @@ class RespuestasController extends Controller
         $data['respuestas'] = $respuestas;
         return view('respuestas.graficos',$data);
     }
+
+
+    public function detalle(Request $request)
+    {
+        $data = $this->getDataArray();
+        $data_request = $request->all();
+        $data['results'] = [];
+        if(!empty($data_request['riesgo']))
+            $data['riesgo'] = $data_request['riesgo'];
+        if(!empty($data_request['sustancia']))
+            $data['sustancia'] = $data_request['sustancia'];
+        if(!empty($data_request['filtrar']))
+            $data['filtrar'] = $data_request['filtrar'];
+            if(!empty($data_request['filtrar']) && $data_request['sustancia'] != 0 && $data_request['riesgo'] != '')
+            {
+                $query = Respuestas::where('puntuaciones','!=','');
+                if($data_request['periodo_inicial'] != "")
+                {
+                    $query->where('created_at', '>=', $data_request['periodo_inicial']);
+                }
+                if($data_request['periodo_final'] != "")
+                {
+                    $query->where('created_at', '<=', $data_request['periodo_final']);
+                }
+                if($data_request['empresa'] != "")
+                {
+                    $query->where('datos_usuario', 'LIKE', '%"empresa":"%' . $data_request['empresa'] . '%"%');
+                }
+                $data['results'] = $query->get();
+        }
+
+        
+
+        return view('respuestas.detalle', $data);
+    } 
+
 
     /**
      * Show the form for creating a new resource.

@@ -46,4 +46,10 @@ return [
         'Moderado' => 'Su actual patrón de consumo de sustancias representa un riesgo para su salud y otros tipos de problemas.',
         'Alto' => 'Usted presenta un riesgo elevado de experimentar problemas graves (de salud, sociales, económicos, legales, de pareja, etc.) derivado de su patrón actual de consumo y probablemente sea dependiente.'
     ],
+
+    'riesgos' => [
+        'Bajo' => 'Bajo',
+        'Moderado' => 'Moderado',
+        'Alto' => 'Alto'
+    ]
 ];

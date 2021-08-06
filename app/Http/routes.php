@@ -36,3 +36,5 @@ Route::get('/index/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXv
 
 Route::get('/estadisticas/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB', ['uses' => 'RespuestasController@estadisticas']);
 
+Route::get('/detalle/OQmQFVAZPTfCIhG841rd/h2oGhrRZg9i1IWcxSD59/uyIPinGYZi3qdRTAbXvB', ['uses' => 'RespuestasController@detalle']);
+

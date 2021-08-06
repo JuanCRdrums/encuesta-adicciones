@@ -38,6 +38,11 @@ class Respuestas extends Model
         return Config('options.significados');
     }
 
+    public static function getComboRiesgos()
+    {
+        return Config('options.riesgos');
+    }
+
     public function getConsumidasAttribute()
     {
         return json_decode($this->pregunta_1);
